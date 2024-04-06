@@ -42,10 +42,10 @@ jobs:
 
     - name: executing DNS Brute
       run: |
-        cat americansystems.com.subs | dnsgen -w dynamic_brute_wordlist.txt - | sort -u > /tmp/dnsgen.tmp
-        altdns -i americansystems.com.subs -w dynamic_brute_wordlist.txt -o /tmp/altdns.tmp
+        cat alexamerican.com.subs | dnsgen -w dynamic_brute_wordlist.txt - | sort -u > /tmp/dnsgen.tmp
+        altdns -i alexamerican.com.subs -w dynamic_brute_wordlist.txt -o /tmp/altdns.tmp
         cat /tmp/dnsgen.tmp /tmp/altdns.tmp > dnsbrute_wordlist.txt
-        shuffledns -l dnsbrute_wordlist.txt -d americansystems.com -r .resolvers -m massdns/bin/massdns -o output.txt
+        shuffledns -l dnsbrute_wordlist.txt -d alexamerican.com -r .resolvers -m massdns/bin/massdns -o output.txt
         
     - name: Upload output as artifact
       uses: actions/upload-artifact@v2
