@@ -43,10 +43,10 @@ jobs:
     - name: executing DNS Brute
       run: |
         cat spec_dynamic_words.txt dynamic_brute_wordlist.txt | sort -u > all_words.txt
-        cat int.remitly.com.subs | dnsgen -w all_words.txt - | sort -u > /tmp/dnsgen.tmp
-        altdns -i int.remitly.com.subs -w all_words.txt -o /tmp/altdns.tmp
+        cat dev.remitly.com.subs | dnsgen -w all_words.txt - | sort -u > /tmp/dnsgen.tmp
+        altdns -i dev.remitly.com.subs -w all_words.txt -o /tmp/altdns.tmp
         cat /tmp/dnsgen.tmp /tmp/altdns.tmp > dnsbrute_wordlist.txt
-        shuffledns -l dnsbrute_wordlist.txt -d int.remitly.com -r .resolvers -m massdns/bin/massdns -o output.txt
+        shuffledns -l dnsbrute_wordlist.txt -d dev.remitly.com -r .resolvers -m massdns/bin/massdns -o output.txt
         
     - name: Upload output as artifact
       uses: actions/upload-artifact@v2
