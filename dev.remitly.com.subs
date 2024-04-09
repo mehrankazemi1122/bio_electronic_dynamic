@@ -1,4 +1,3 @@
-
 api-preprod.dev.remitly.com
 auth-preprod.dev.remitly.com
 client-tls.dev.remitly.com
@@ -8,6 +7,17 @@ icici-sign.dev.remitly.com
 jpm.dev.remitly.com
 jpm-signing.dev.remitly.com
 preprod.dev.remitly.com
-vpn.dev.remitly.com
 www.dev.remitly.com
 www.jpm.dev.remitly.com
+atlas.dev.remitly.com
+chat.dev.remitly.com
+crm-preprod.dev.remitly.com
+echo.dev.remitly.com
+gantt.dev.remitly.com
+messi.dev.remitly.com
+multiplex.dev.remitly.com
+opportunities.dev.remitly.com
+passbook.dev.remitly.com
+temporal.dev.remitly.com
+trove.dev.remitly.com
+zap.dev.remitly.com
