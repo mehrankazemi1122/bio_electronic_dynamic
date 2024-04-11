@@ -45,7 +45,8 @@ jobs:
     - name: executing DNS Brute
       run: |
         cat dynamic_brute_wordlist.txt | sort -u > all_words.txt
-        cat all_words.txt | sort -u | sponge all_words.txt
+        cat all_words.txt | sort -u > temp.tmp
+        cat temp.tmp > all_words.txt
         cat allegro.pl.allegrosandbox.pl.subs | dnsgen -w all_words.txt - | sort -u > /tmp/dnsgen.tmp
         altdns -i allegro.pl.allegrosandbox.pl.subs -w all_words.txt -o /tmp/altdns.tmp
         cat /tmp/dnsgen.tmp /tmp/altdns.tmp > dnsbrute_wordlist.txt
