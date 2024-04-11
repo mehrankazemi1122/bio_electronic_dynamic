@@ -40,13 +40,16 @@ jobs:
 #        masscan --version
 #        shuffledns -version
 
+#        cat spec_dynamic_words.txt | sort -u > all_words.txt
+
     - name: executing DNS Brute
       run: |
-        cat spec_dynamic_words.txt dynamic_brute_wordlist.txt | sort -u > all_words.txt
-        cat dev.remitly.com.subs | dnsgen -w all_words.txt - | sort -u > /tmp/dnsgen.tmp
-        altdns -i dev.remitly.com.subs -w all_words.txt -o /tmp/altdns.tmp
+        cat dynamic_brute_wordlist.txt | sort -u > all_words.txt
+        cat all_words.txt | sort -u | sponge all_words.txt
+        cat allegro.pl.allegrosandbox.pl.subs | dnsgen -w all_words.txt - | sort -u > /tmp/dnsgen.tmp
+        altdns -i allegro.pl.allegrosandbox.pl.subs -w all_words.txt -o /tmp/altdns.tmp
         cat /tmp/dnsgen.tmp /tmp/altdns.tmp > dnsbrute_wordlist.txt
-        shuffledns -l dnsbrute_wordlist.txt -d dev.remitly.com -r .resolvers -m massdns/bin/massdns -o output.txt
+        shuffledns -l dnsbrute_wordlist.txt -d allegro.pl.allegrosandbox.pl -r .resolvers -m massdns/bin/massdns -o output.txt
         
     - name: Upload output as artifact
       uses: actions/upload-artifact@v2
