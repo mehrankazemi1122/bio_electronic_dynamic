@@ -47,10 +47,11 @@ jobs:
         cat dynamic_brute_wordlist.txt | sort -u > all_words.txt
         cat all_words.txt | sort -u > temp.tmp
         cat temp.tmp > all_words.txt
-        cat allegro.pl.allegrosandbox.pl.subs | dnsgen -w all_words.txt - | sort -u > /tmp/dnsgen.tmp
-        altdns -i allegro.pl.allegrosandbox.pl.subs -w all_words.txt -o /tmp/altdns.tmp
+        cat target_subdomains.txt | dnsgen -w all_words.txt - | sort -u > /tmp/dnsgen.tmp
+        altdns -i target_subdomains.txt -w all_words.txt -o /tmp/altdns.tmp
         cat /tmp/dnsgen.tmp /tmp/altdns.tmp > dnsbrute_wordlist.txt
-        shuffledns -l dnsbrute_wordlist.txt -d allegro.pl.allegrosandbox.pl -r .resolvers -m massdns/bin/massdns -o output.txt
+        cat dnsbrute_wordlist.txt | wc -l
+        shuffledns -l dnsbrute_wordlist.txt -d verisign.com -r .resolvers -m massdns/bin/massdns -o output.txt
         
     - name: Upload output as artifact
       uses: actions/upload-artifact@v2
