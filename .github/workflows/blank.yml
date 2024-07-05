@@ -51,7 +51,7 @@ jobs:
         altdns -i target_subdomains.txt -w all_words.txt -o /tmp/altdns.tmp
         cat /tmp/dnsgen.tmp /tmp/altdns.tmp > dnsbrute_wordlist.txt
         cat dnsbrute_wordlist.txt | wc -l
-        shuffledns -l dnsbrute_wordlist.txt -d verisign.com -r .resolvers -m massdns/bin/massdns -o output.txt
+        shuffledns -l dnsbrute_wordlist.txt -d verisign.com -r .resolvers -m massdns/bin/massdns -o output.txt -mode resolve
         
     - name: Upload output as artifact
       uses: actions/upload-artifact@v2
